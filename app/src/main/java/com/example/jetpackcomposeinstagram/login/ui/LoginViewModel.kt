@@ -7,11 +7,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetpackcomposeinstagram.login.domain.LoginUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-class LoginViewModel: ViewModel() {
+import javax.inject.Inject
+
+//Con esta etiqueta, ya tenemos este ViewModel preparado para DI
+@HiltViewModel
+
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase): ViewModel() {
 
     //Aquí vamos a llamar a nuestro caso de uso
-    val loginUseCase = LoginUseCase()
+    //Video #100: Este caso de uso aún no está listo para ser inyectado, por eso se comenta ésta
+    // instancia
+    //val loginUseCase = LoginUseCase()
 
 
     /*This variable can only be accessed from the ViewModel*/
